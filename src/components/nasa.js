@@ -1,14 +1,38 @@
 import React from "react";
 import moment from "moment";
-
+import styled from "styled-components";
+//----------------------------------------------------------
 function Nasa(props) {
+  //---------------------------------------------------------
+  const NASA = styled.div`
+    width: 75%;
+
+    background-image: url("https://images.unsplash.com/photo-1515825838458-f2a94b20105a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1534&q=80");
+  `;
+  const TITLE = styled.div`
+    font-size: 2rem;
+    text-align: center;
+    background-color: lightgrey;
+    padding: 2%;
+    color: black;
+  `;
+  const DATE = styled.div`
+    text-align: center;
+    background-color: white;
+    padding: 0.5%;
+  `;
+  const EXPLANATION = styled.div`
+    text-indent: 15px;
+    padding: 1.5rem;
+    background-color: white;
+  `;
+
+  //---------------------------------------------------------
   return (
     <>
-      <div className="card NASA">
-        <h3 className="card-title TITLE">{props.title}</h3>
-        <p className="DATE">
-          {moment(props.date).format("MMMM Do YYYY, h:mm:ss a")}
-        </p>
+      <NASA>
+        <TITLE>⭐ " {props.title} " ⭐</TITLE>
+        <DATE>{moment(props.date).format("MMMM Do YYYY, h:mm:ss a")}</DATE>
 
         {props.media_type === "video" ? (
           //is media type a video?
@@ -34,8 +58,8 @@ function Nasa(props) {
           />
         )}
 
-        <p className="EXPLANATION card-desc">{props.explanation}</p>
-      </div>
+        <EXPLANATION>{props.explanation}</EXPLANATION>
+      </NASA>
     </>
   );
 }
