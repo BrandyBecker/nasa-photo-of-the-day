@@ -1,9 +1,15 @@
 import React from "react";
+import moment from "moment";
 
 function Nasa(props) {
   return (
     <>
       <div className="card NASA">
+        <h3 className="card-title TITLE">{props.title}</h3>
+        <p className="DATE">
+          {moment(props.date).format("MMMM Do YYYY, h:mm:ss a")}
+        </p>
+
         {props.media_type === "video" ? (
           //is media type a video?
           //if so,
@@ -28,8 +34,6 @@ function Nasa(props) {
           />
         )}
 
-        <h3 className="card-title TITLE">{props.title}</h3>
-        <p className="DATE">{props.date}</p>
         <p className="EXPLANATION card-desc">{props.explanation}</p>
       </div>
     </>
