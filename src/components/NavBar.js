@@ -8,6 +8,7 @@ import {
   NavItem,
   NavLink
 } from "reactstrap";
+import { DatePickerAye } from "./DatePicker";
 
 export default class NavBar extends React.Component {
   constructor(props) {
@@ -35,6 +36,10 @@ export default class NavBar extends React.Component {
               alt="Nasa Logo"
             />
           </NavbarBrand>
+          <DatePickerAye
+            startDate={this.props.startDate}
+            setStartDate={this.props.setStartDate}
+          />
           <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
           <Collapse isOpen={!this.state.collapsed} navbar>
             <Nav navbar>
@@ -43,6 +48,7 @@ export default class NavBar extends React.Component {
                   🚀 NASA Website 🚀
                 </NavLink>
               </NavItem>
+
               <NavItem>
                 <NavLink
                   className="navbar-text"

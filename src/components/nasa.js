@@ -15,6 +15,7 @@ function Nasa(props) {
     background-color: lightgrey;
     padding: 2%;
     color: black;
+    font-style: italic;
   `;
   const DATE = styled.div`
     text-align: center;
@@ -42,7 +43,7 @@ function Nasa(props) {
             className="card-img-top"
             width="420"
             height="315"
-            src={props.hdurl}
+            src={props.src}
             title="temp"
           />
         ) : (

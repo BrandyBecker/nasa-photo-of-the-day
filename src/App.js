@@ -10,10 +10,12 @@ import NasaLoader from "./components/NasaLoader";
 import NavBar from "./components/NavBar";
 
 function App() {
+  const [startDate, setStartDate] = useState(new Date());
   return (
     <>
-      <NavBar />
-      <NasaLoader />
+      <NavBar startDate={startDate} setStartDate={setStartDate} />
+
+      <NasaLoader startDate={startDate} />
     </>
   );
 }

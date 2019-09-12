@@ -5,8 +5,9 @@ import axios from "axios";
 import galactic from "../content/galactic.jpg";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
+import moment from "moment";
 
-function NasaLoader() {
+function NasaLoader(props) {
   const [nasa, setNasa] = useState([]);
   const errorNasa = {
     media_type: "image",
@@ -17,9 +18,10 @@ function NasaLoader() {
   };
 
   useEffect(() => {
+    const date = moment(props.startDate).format("YYYY-MM-DD");
     axios
       .get(
-        `https://api.nasa.gov/planetary/apod?api_key=uihJcDdtEs43UXDapofhV5WwOs9g2bbWPeUJPbvc`
+        `https://api.nasa.gov/planetary/apod?api_key=uihJcDdtEs43UXDapofhV5WwOs9g2bbWPeUJPbvc&date=${date}`
       )
       .then(res => {
         setNasa(res.data);
@@ -28,13 +30,14 @@ function NasaLoader() {
         setNasa(errorNasa);
         console.log(error);
       });
-  }, []);
+    console.log(props.startDate);
+  }, [props.startDate]);
 
   return (
     <div className="APP">
       <div className="SHUTTLE">
         {console.log(nasa)}
-        {!nasa.url || !nasa.hdurl ? (
+        {!nasa.url ? (
           <h3 className="loader">
             <p className="loadText">{" Loading... "}</p>
             <Loader type="Triangle" color="red" height={300} width={300} />
@@ -45,7 +48,6 @@ function NasaLoader() {
             explanation={nasa.explanation}
             src={nasa.url}
             media_type={nasa.media_type}
-            hdurl={nasa.hdurl}
             title={nasa.title}
           />
         )}
